@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-12-24T08:27:04.735Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot 容器化</title>
+    <link href="http://example.com/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/"/>
+    <id>http://example.com/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/</id>
+    <published>2020-12-24T07:18:42.000Z</published>
+    <updated>2020-12-24T08:27:04.735Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-材料"><a href="#1-材料" class="headerlink" title="1 材料"></a>1 材料</h1><ul><li>docker </li><li>SpringBoot</li><li>IDEA</li></ul><h1 id="2-通过IDEA搭建名称为dockersb的Springboot-maven-web应用"><a href="#2-通过IDEA搭建名称为dockersb的Springboot-maven-web应用" class="headerlink" title="2 通过IDEA搭建名称为dockersb的Springboot maven web应用"></a>2 通过IDEA搭建名称为dockersb的Springboot maven web应用</h1><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/C1004034-940F-4308-833E-011AF3F14302.png" class="" title="This is an image"><h1 id="3-编写一个Spring-MVC接口"><a href="#3-编写一个Spring-MVC接口" class="headerlink" title="3 编写一个Spring MVC接口"></a>3 编写一个Spring MVC接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fl.dockersb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@program</span>: dockersb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: fanglei</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2020-12-19 18:36</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/docker&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,String&gt; <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Map&lt;String,String&gt; map =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;fanglei&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/6C736B97-1090-4C27-9835-B04CBFD9595E.png" class="" title="This is an image"><h1 id="4-用maven将项目打成jar包"><a href="#4-用maven将项目打成jar包" class="headerlink" title="4 用maven将项目打成jar包"></a>4 用maven将项目打成jar包</h1><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/0FD987FD-6EC1-4ED5-B649-2ECC8FDBB150.png" class="" title="This is an image"><h1 id="5-编写Dockerfile"><a href="#5-编写Dockerfile" class="headerlink" title="5 编写Dockerfile"></a>5 编写Dockerfile</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> java:<span class="number">8</span></span><br><span class="line"><span class="comment"># 作者署名</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> yimaotou</span><br><span class="line"> <span class="comment"># 挂载的容器磁盘</span></span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> /tmp</span></span><br><span class="line"><span class="comment"># 使用东八区时间 环境 其他环境参数也可以通过ENV 声明</span></span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> ln -snf /usr/share/zoneinfo/<span class="variable">$TZ</span> /etc/localtime &amp;&amp; <span class="built_in">echo</span> <span class="variable">$TZ</span> &gt; /etc/timezone</span></span><br><span class="line"><span class="comment">#  add 命令是 将主机构建环境（上下文）目录中的文件和目录、以及一个URL标记的文件 拷贝到镜像中</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> target/dockersb-0.0.1-SNAPSHOT.jar app.jar</span></span><br><span class="line"><span class="comment"># 暴露端口 跟springboot 默认应用端口一样</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"> <span class="comment">#  启动镜像就执行的命令操作   相当于执行  java -jar  app.jar  -Djava.security.egd=file:/dev/./urandom     最后的指令是为了加快启动</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">&quot;java&quot;</span>,<span class="string">&quot;-Djava.security.egd=file:/dev/.urandom&quot;</span>,<span class="string">&quot;-jar&quot;</span>,<span class="string">&quot;/app.jar&quot;</span>]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h1 id="6-构建镜像"><a href="#6-构建镜像" class="headerlink" title="6 构建镜像"></a>6 构建镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/IdeaProjects/dockersb$     docker build -t docker-springboot:0.0.1 .</span><br></pre></td></tr></table></figure><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/385B2154-F5D8-4881-B283-ABBD2CA4A919.png" class="" title="This is an image"><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/14851A7A-5093-4AE2-8203-16F9C685FE28.png" class="" title="This is an image"><h1 id="7-启动容器"><a href="#7-启动容器" class="headerlink" title="7 启动容器"></a>7 启动容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --name docker-app -p 8080:8080 docker-springboot:0.0.1</span><br><span class="line"></span><br></pre></td></tr></table></figure><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/99B37E65-379E-47B2-B713-A3F2BB61600D.png" class="" title="This is an image"><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/955A3893-06D4-49E6-B2DA-3D78822C92C2.png" class="" title="This is an image"><h1 id="8-检验效果"><a href="#8-检验效果" class="headerlink" title="8 检验效果"></a>8 检验效果</h1><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/E8408E30-6769-49DF-A2CD-4442C237A7F5.png" class="" title="This is an image"><p>进入到容器查看详情</p><img src="/2020/12/24/SpringBoot%E5%AE%B9%E5%99%A8%E5%8C%96/A635E90A-E8FC-46FC-AF09-456C58900099.png" class="" title="This is an image"><h1 id="9-参考文件"><a href="#9-参考文件" class="headerlink" title="9 参考文件"></a>9 参考文件</h1><p><a href="https://juejin.cn/post/6844903970163556359">Spring Boot 2 实战：结合 Docker 容器化</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-材料&quot;&gt;&lt;a href=&quot;#1-材料&quot; class=&quot;headerlink&quot; title=&quot;1 材料&quot;&gt;&lt;/a&gt;1 材料&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;docker &lt;/li&gt;
+&lt;li&gt;SpringBoot&lt;/li&gt;
+&lt;li&gt;IDEA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1</summary>
+      
+    
+    
+    
+    <category term="docker" scheme="http://example.com/categories/docker/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客搭建教程</title>
+    <link href="http://example.com/2020/12/23/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2020/12/23/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</id>
+    <published>2020-12-23T10:08:00.000Z</published>
+    <updated>2020-12-24T08:43:11.045Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-hexo博客搭建教程链接"><a href="#1-hexo博客搭建教程链接" class="headerlink" title="1. hexo博客搭建教程链接"></a>1. hexo博客搭建教程链接</h1><p><a href="https://cloud.tencent.com/developer/article/1520557">https://cloud.tencent.com/developer/article/1520557</a></p><h1 id="2-Hexo博客搭建之在文章中插入图片链接"><a href="#2-Hexo博客搭建之在文章中插入图片链接" class="headerlink" title="2.Hexo博客搭建之在文章中插入图片链接"></a>2.Hexo博客搭建之在文章中插入图片链接</h1><p><a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a></p><h1 id="3-fun主题使用链接"><a href="#3-fun主题使用链接" class="headerlink" title="3.fun主题使用链接"></a>3.fun主题使用链接</h1><p><a href="https://github.com/homeant/hexo-theme-fun">https://github.com/homeant/hexo-theme-fun</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-hexo博客搭建教程链接&quot;&gt;&lt;a href=&quot;#1-hexo博客搭建教程链接&quot; class=&quot;headerlink&quot; title=&quot;1. hexo博客搭建教程链接&quot;&gt;&lt;/a&gt;1. hexo博客搭建教程链接&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://clo</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>测试一下</title>
+    <link href="http://example.com/2020/12/05/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/"/>
+    <id>http://example.com/2020/12/05/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/</id>
+    <published>2020-12-05T15:47:00.000Z</published>
+    <updated>2020-12-05T15:49:06.342Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么鬼啊"><a href="#什么鬼啊" class="headerlink" title="什么鬼啊"></a>什么鬼啊</h2><h3 id="啊这"><a href="#啊这" class="headerlink" title="啊这"></a>啊这</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;什么鬼啊&quot;&gt;&lt;a href=&quot;#什么鬼啊&quot; class=&quot;headerlink&quot; title=&quot;什么鬼啊&quot;&gt;&lt;/a&gt;什么鬼啊&lt;/h2&gt;&lt;h3 id=&quot;啊这&quot;&gt;&lt;a href=&quot;#啊这&quot; class=&quot;headerlink&quot; title=&quot;啊这&quot;&gt;&lt;/a&gt;啊这&lt;/h</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
